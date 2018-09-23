@@ -18,8 +18,15 @@ class OneHourElectricityController extends Controller
      */
     public function index(Request $request)
     {
+       $validator = Validator::make($request->all(), [
+            'panel_serial' => 'required | size:15',
+        ]);
+
+        if ($validator->fails()) {
+            return Response::json($validator->errors()->all(), 422);
+        }
         $panel = Panel::where('serial', $request->panel_serial)->firstOrFail();
-        return OneHourElectricity::where('panel_id', $panel->id)->get();
+        return Response::json((Panel::find($panel->id)->oneHourElectricities), 200);
     }
 
     /**
@@ -40,6 +47,6 @@ class OneHourElectricityController extends Controller
             return Response::json($validator->errors()->all(), 422);
         }
 
-        return $panel->oneHourElectricities()->create($params);
+        return Response::json(($panel->oneHourElectricities()->create($params)),200);
     }
 }

@@ -15,8 +15,8 @@ use Illuminate\Http\Request;
 
 Route::middleware('api')->post('/panels', 'PanelController@store');
 
-Route::middleware('api')->get('/one_hour_electricities', 'OneHourElectricityController@index');
+Route::middleware('api')->post('/one_hour_electricity', 'OneHourElectricityController@index');
 
 Route::middleware('api')->post('/one_hour_electricities', 'OneHourElectricityController@store');
 
-Route::middleware('api')->get('/one_day_electricities', 'OneDayElectricityController@index');
+Route::middleware('api')->post('/one_day_electricities', 'OneDayElectricityController@index');
