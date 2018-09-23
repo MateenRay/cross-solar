@@ -20,3 +20,6 @@ Route::middleware('api')->post('/one_hour_electricity', 'OneHourElectricityContr
 Route::middleware('api')->post('/one_hour_electricities', 'OneHourElectricityController@store');
 
 Route::middleware('api')->post('/one_day_electricities', 'OneDayElectricityController@index');
+
+Route::middleware('api')->post('/one_month_electricities', 'OneDayElectricityController@monthData');
+Route::middleware('api')->post('/one_year_electricities', 'OneDayElectricityController@yearData');
